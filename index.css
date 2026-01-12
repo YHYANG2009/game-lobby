@@ -1,0 +1,39 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.game-container {
+    display: flex;
+    gap: 20px; /* 卡片之間的距離 */
+}
+
+.game-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 150px;
+    text-decoration: none; /* 移除超連結底線 */
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid transparent;
+}
+
+.game-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
