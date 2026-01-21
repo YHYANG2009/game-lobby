@@ -1,0 +1,126 @@
+body {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  display: block;
+  background-color: #90ee90;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  font-size: 3em;
+  margin: 0 auto;
+  padding-bottom: 0.1em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+button,
+#random {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 auto;
+  padding: 0.5em;
+  background-color: #00ca5a;
+  border-radius: 1em;
+  border: none;
+  outline: none;
+  opacity: 0.8;
+  transition: 0.3s;
+  text-align: center;
+  text-decoration: none;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: 1.2em;
+  width: 20em;
+  box-shadow: 0 9px #008080;
+}
+
+button:hover,
+#random:hover {
+  background-color: #009a3a;
+  opacity: 1;
+}
+
+button:active,
+#random:active {
+  background-color: #007a1a;
+  box-shadow: 0 5px #004040;
+  transform: translateY(4px);
+}
+
+#size,
+#edit,
+#speed {
+  font-size: 1em;
+}
+
+label {
+  font-size: 1em;
+  display: none;
+  font-weight: bold;
+}
+
+input {
+  display: none;
+  border: none;
+  outline: none;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  border-radius: 0.5em;
+  font-size: 1em;
+}
+
+#random {
+  display: none;
+  font-size: 1em;
+}
+
+#br1,
+#br2 {
+  display: none;
+}
+
+#functions {
+  display: none;
+  text-align: center;
+  margin: 0 auto;
+}
+
+output {
+  display: none;
+}
+
+#home_button {
+    /* 1. 漂浮定位 */
+    position: fixed;  /* 固定定位：不隨卷軸移動 */
+    top: 20px;        /* 距離頂部 20px */
+    left: 20px;       /* 距離左邊 20px */
+    z-index: 1000;    /* 確保按鈕永遠浮在遊戲畫面上層 */
+
+    /* 2. 外觀與尺寸 */
+    font-size: 24px;       /* 圖示大小 */
+    text-decoration: none; /* 去除底線 */
+    font-family: Arial, Helvetica, sans-serif;
+    width: 50px;           /* 按鈕寬度 */
+    height: 50px;          /* 按鈕高度 */
+    border-radius: 50%;    /* 變成正圓形 */
+    
+    /* 3. 置中對齊圖示 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 4. 半透明毛玻璃效果 (重點！) */
+    background-color: rgba(255, 255, 255, 0.4); /* 白色背景，40% 不透明度 */
+    backdrop-filter: blur(5px);                 /* 背景模糊特效 */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* 淡淡的邊框 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);   /* 陰影增加立體感 */
+}
