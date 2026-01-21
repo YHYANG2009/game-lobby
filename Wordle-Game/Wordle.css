@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+hr {
+    width: 500px;
+}
+
+#board {
+    width: 360px;
+    height: 440px;
+
+    /* 顏色 */
+    /* --> 盡量做得像原本的顏色 */
+    border: 6px solid white;
+    background-color: white;
+
+    /* 置中 */
+    margin: 0 auto;
+
+    /* 確保到時候格子不會全部分散 */
+
+    /* 讓格子能夠排列成一行而不是不斷換行 */
+    display: flex;
+    /* 當行列空間不足時換行 */
+    flex-wrap: wrap;
+}
+
+.tile {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #d3d6da;
+    margin: 5px;
+
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.correct {
+    background-color: #6aaa64;
+    border-color: #6aaa64;
+    color: white;
+}
+
+.exsist {
+    background-color: #c9b458;
+    border-color: #c9b458;
+    color: white;
+}
+
+.wrong {
+    background-color: #787c7e;
+    border-color: #787c7e;
+    color: white;
+}
+
+.not_check {
+    background-color: white;
+    border-color: black;
+    color: black;
+}
+
+.not_in_wordlist-container {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.not_in_wordlist {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#gameOver .gameOverText {
+    color: black;
+    font-size: 64px;
+    font-weight: bolder;
+}
+#gameOver {
+    /* 蓋住整個board */
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    width: 100vw;
+    height: 100vh;
+
+    /* 看起來是半透明的 */
+    background: rgba(255,255,255,0.75);
+    /* 一開始隱藏 */
+    display: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.Restart_text {
+    color: black;
+    font-size: 32px;
+    font-weight:300;
+}
+
+#the_ans {
+    color: black;
+    font-size: 28px;
+    font-weight:300;
+}
+
+#home_button {
+    /* 1. 漂浮定位 */
+    position: fixed;  /* 固定定位：不隨卷軸移動 */
+    top: 20px;        /* 距離頂部 20px */
+    left: 20px;       /* 距離左邊 20px */
+    z-index: 1000;    /* 確保按鈕永遠浮在遊戲畫面上層 */
+
+    /* 2. 外觀與尺寸 */
+    font-size: 24px;       /* 圖示大小 */
+    text-decoration: none; /* 去除底線 */
+    font-family: Arial, Helvetica, sans-serif;
+    width: 50px;           /* 按鈕寬度 */
+    height: 50px;          /* 按鈕高度 */
+    border-radius: 50%;    /* 變成正圓形 */
+    
+    /* 3. 置中對齊圖示 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* 4. 半透明毛玻璃效果 (重點！) */
+    background-color: rgba(255, 255, 255, 0.4); /* 白色背景，40% 不透明度 */
+    backdrop-filter: blur(5px);                 /* 背景模糊特效 */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* 淡淡的邊框 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);   /* 陰影增加立體感 */
+}
