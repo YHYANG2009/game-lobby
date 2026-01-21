@@ -87,6 +87,26 @@ hr {
     font-size: 16px;
 }
 
+.repeated-container {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.repeated {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
 #gameOver .gameOverText {
     color: black;
     font-size: 64px;

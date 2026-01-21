@@ -108,46 +108,60 @@ document.addEventListener("keyup", function(event){
         updateTile(tile, '_');
         console.log("Backspace");
     } else if(event.code === "Enter" && pos_c === 5){
+        if(if_repeated()){
+            showRepeated();
+            return;
+        }
         let cur_row = board[pos_r].slice();
         let guess = cur_row.join("");
         
-        if(wordlist.includes(guess)){
-            let result = check_ans(guess);
-
-            for(let c = 0; c < column; c++){
-                let tile = document.getElementById(pos_r.toString() + "-" + c.toString());
-                if(result[c] === '2'){
-                    tile.classList.replace("not_check", "correct");
-                } else if(result[c] === '1'){
-                    tile.classList.replace("not_check", "exsist");
-                } else {
-                    tile.classList.replace("not_check", "wrong");
-                }
-            }
-
-            pos_r += 1;
-            pos_c = 0;
-
-            //check if game over:
-            //1. 6 row
-            //2. correct ans
-
-            if(all_correct(result)){
-                gameOver = true;
-            } else if(pos_r === row){
-                gameOver = true;
-            }
-
-            console.log("Enter");
-
-            if(gameOver){
-                show_game_over();
-            }
-        } else {
+        if(!wordlist.includes(guess)){
             showNotInWordlist();
+            return;
+        }
+
+        let result = check_ans(guess);
+
+        for(let c = 0; c < column; c++){
+            let tile = document.getElementById(pos_r.toString() + "-" + c.toString());
+            if(result[c] === '2'){
+                tile.classList.replace("not_check", "correct");
+            } else if(result[c] === '1'){
+                tile.classList.replace("not_check", "exsist");
+            } else {
+                tile.classList.replace("not_check", "wrong");
+            }
+        }
+
+        pos_r += 1;
+        pos_c = 0;
+
+        //check if game over:
+        //1. 6 row
+        //2. correct ans
+
+        if(all_correct(result)){
+            gameOver = true;
+        } else if(pos_r === row){
+            gameOver = true;
+        }
+
+        console.log("Enter");
+
+        if(gameOver){
+            show_game_over();
         }
     }
 })
+
+function if_repeated(){
+    for(let r = 0; r < pos_r; r++){
+        if(board[r].join('') === board[pos_r].join('')){
+            return true;
+        }
+    }
+    return false;
+}
 
 function show_game_over(){
     document.getElementById("the_ans").innerText = ans.toLowerCase();
@@ -158,6 +172,15 @@ function show_game_over(){
 function showNotInWordlist(){
     let container = document.getElementById('not_in_wordlist_container');
     let message = document.getElementById('not_in_wordlist');
+    if(!container || !message) return;
+    container.style.display = 'block';
+    message.style.display = 'block';
+    setTimeout(()=>{ container.style.display = 'none'; }, 1500);
+}
+
+function showRepeated(){
+    let container = document.getElementById('repeated-container');
+    let message = document.getElementById('repeated');
     if(!container || !message) return;
     container.style.display = 'block';
     message.style.display = 'block';
