@@ -5,17 +5,18 @@ let pos_r = 0;
 let pos_c = 0;
 
 let wordlist = [];
+let guesslist = [];
 let ans = "";
 
 let gameOver = false;
 
-async function LoadWordlist() {
+async function LoadWordlist(datasourse) {
     //try --> 如果發生錯誤就會到catch裡面
     //如果正常就不會進catch
     try{
         console.log("Loading wordlist...");
 
-        const response = await fetch('Wordlist.txt');
+        const response = await fetch(datasourse);
         //手動進入catch告訴他檔案錯了
         if (!response.ok) {
             throw new Error('讀取失敗');
@@ -24,9 +25,7 @@ async function LoadWordlist() {
         //變成一坨字串
         const textData = await response.text();
         //trim刪除所有看不到的字元(ex: tab, space, enter...)
-        wordlist = textData.split("\n").map(word => word.trim());
-
-        console.log("載入完成");
+        return textData.split("\n").map(word => word.trim());
     } catch (error) {
         console.error(error);
     }
@@ -39,7 +38,8 @@ function select_ans(){
 }
 
 window.onload = async function(){
-    await LoadWordlist();
+    wordlist = await LoadWordlist('Wordlist.txt');
+    guesslist = await LoadWordlist('Guesslist.txt');
     initialize();
 }
 
@@ -115,7 +115,7 @@ document.addEventListener("keyup", function(event){
         let cur_row = board[pos_r].slice();
         let guess = cur_row.join("");
         
-        if(!wordlist.includes(guess)){
+        if(!wordlist.includes(guess) && !guesslist.includes(guess)){
             showNotInWordlist();
             return;
         }
