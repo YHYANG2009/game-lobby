@@ -9,6 +9,7 @@ let guesslist = [];
 let ans = "";
 
 let gameOver = false;
+let win = false;
 
 async function LoadWordlist(datasourse) {
     //try --> 如果發生錯誤就會到catch裡面
@@ -69,6 +70,8 @@ function initialize(){
     if(gameOver_text){
         gameOver_text.style.display = 'none';
     }
+
+    win = false;
 }
 
 function updateTile(tile, text){
@@ -112,6 +115,7 @@ document.addEventListener("keyup", function(event){
             showRepeated();
             return;
         }
+
         let cur_row = board[pos_r].slice();
         let guess = cur_row.join("");
         
@@ -132,6 +136,7 @@ document.addEventListener("keyup", function(event){
                 tile.classList.replace("not_check", "wrong");
             }
         }
+        //mark the colors
 
         pos_r += 1;
         pos_c = 0;
@@ -142,8 +147,10 @@ document.addEventListener("keyup", function(event){
 
         if(all_correct(result)){
             gameOver = true;
+            win = true;
         } else if(pos_r === row){
             gameOver = true;
+            win = false;
         }
 
         console.log("Enter");
@@ -165,6 +172,14 @@ function if_repeated(){
 
 function show_game_over(){
     document.getElementById("the_ans").innerText = ans.toLowerCase();
+    if(win){
+        document.getElementById("win_or_lose").innerText = "";
+        document.getElementById("win_or_lose").innerText = "YOU WIN";
+    } else{
+        document.getElementById("win_or_lose").innerText = "";
+        document.getElementById("win_or_lose").innerText = "YOU LOSE";
+    }
+    
     let gameOverElem = document.getElementById("gameOver");
     if(gameOverElem) gameOverElem.style.display = "flex";
 }
@@ -215,6 +230,8 @@ function restart_game(){
     if(gameOver_text){
         gameOver_text.style.display = 'none';
     }
+
+    win = false;
 }
 
 function all_correct(result){

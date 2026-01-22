@@ -112,6 +112,7 @@ hr {
     font-size: 64px;
     font-weight: bolder;
 }
+
 #gameOver {
     /* 蓋住整個board */
     position: fixed;
@@ -140,6 +141,13 @@ hr {
     color: black;
     font-size: 28px;
     font-weight:300;
+}
+
+#win_or_lose {
+    color: black;
+    font-size: 64px;
+    font-weight: bold;
+    display: block;
 }
 
 #home_button {
