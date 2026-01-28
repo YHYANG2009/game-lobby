@@ -90,11 +90,11 @@ document.addEventListener('keyup', function(event){
         show_game_over();
     }
 
-    // //for debug
-    if(event.code === "KeyE"){
-        show_game_over();
-        console.log("game over");
-    }
+    // // //for debug
+    // if(event.code === "KeyE"){
+    //     show_game_over();
+    //     console.log("game over");
+    // }
 })
 
 function show_game_over(){
