@@ -183,6 +183,12 @@ button,
     box-shadow: 0 9px #5f5a52;
 }
 
+#rules {
+    color: black;
+    font-size: 16px;
+    font-weight:bold;
+}
+
 button:active,
 #random:active {
     box-shadow: 0 5px #ece0ca;

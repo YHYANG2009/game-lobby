@@ -176,3 +176,9 @@ hr {
     border: 1px solid rgba(255, 255, 255, 0.5); /* 淡淡的邊框 */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);   /* 陰影增加立體感 */
 }
+
+#rules {
+    color: black;
+    font-size: 16px;
+    font-weight:bold;
+}
