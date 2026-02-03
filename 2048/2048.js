@@ -3,6 +3,8 @@ let row = 4;
 let column = 4;
 let board;
 
+let best_score = 0;
+
 window.onload = function(){
     setgame();
 }
@@ -100,6 +102,11 @@ document.addEventListener('keyup', function(event){
 function show_game_over(){
     let gameOver = document.getElementById("gameOver");
     document.getElementById("finalScore").innerText = score;
+    if(best_score < score){
+        best_score = score;
+        document.getElementById("best_score").innerText = best_score;
+    }
+
     if(gameOver){
         gameOver.style.display = "flex";
     }
